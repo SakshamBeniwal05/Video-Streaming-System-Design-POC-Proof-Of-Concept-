@@ -5,8 +5,8 @@ import { MyPlayer } from './VideoPlayer'
 function App() {
   
   const [video, setvideo] = useState({
-    "originalName": "Kalank Title Track - Arijit Singh  Alia Bhatt & Varun Dhawan  Pritam  Lyrical - Soulful Arijit Singh Songs (720p, h264).mp4",
-    "savedAs": "file-6da70494-226c-4e22-954e-274fc6eaef5e.mp4",
+    "originalName": "DEMO..mp4",
+    "savedAs": "DEMO.mp4",
     "mimeType": "video/mp4",
     "sizeInBytes": 20509165,
     "savedToPath": "uploads\\file-6da70494-226c-4e22-954e-274fc6eaef5e.mp4",
