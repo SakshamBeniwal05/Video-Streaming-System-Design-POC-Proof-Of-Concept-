@@ -44,6 +44,26 @@ const ffmpegCommand = `ffmpeg -i "${videoPath}" -codec:v libx264 -codec:a aac -h
 - **FFmpeg installed and available in your system PATH**
 - npm/yarn for installing frontend and backend dependencies
 
+## Run with Docker
+
+Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) (or Docker Engine), then pull the [backend image](https://hub.docker.com/repository/docker/sakshambeniwal/videostreambackend/general) and [frontend image](https://hub.docker.com/repository/docker/sakshambeniwal/videostreamfrontend/general):
+
+```bash
+docker pull sakshambeniwal/videostreambackend:latest
+docker pull sakshambeniwal/videostreamfrontend:latest
+```
+
+Run each container in a separate terminal. The images do not declare exposed ports, so publish the container ports explicitly with `-p HOST_PORT:CONTAINER_PORT`:
+
+```bash
+docker run -d --name videostream-backend -p 3000:3000 -v videostream-uploads:/VideoStream/uploads sakshambeniwal/videostreambackend:latest
+docker run -d --name videostream-frontend -p 8000:8000 sakshambeniwal/videostreamfrontend:latest
+```
+
+Open the frontend at [http://localhost:8000](http://localhost:8000). It sends upload requests to the backend at `http://localhost:3000`. The named Docker volume keeps uploaded videos when the backend container is replaced.
+
+The backend requires FFmpeg to process uploaded videos. Make sure the backend image includes FFmpeg; otherwise, upload processing will fail.
+
 ## Notes / Scope of this POC
 
 - This POC focuses on **segmentation only** a single quality rendition is generated per video.
