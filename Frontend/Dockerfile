@@ -9,4 +9,3 @@ COPY . .
 RUN npm run build
 RUN npm install -g serve
 ENTRYPOINT ["serve","-s","dist","-l","8000" ]
-
